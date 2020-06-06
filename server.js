@@ -48,13 +48,13 @@ nunjucks.configure("views", {
 
 //criei uma rota /
 // e capturei o pedido do cliente para responder
-server.get("/", function(req, res) {
-    
+server.get("/", function (req, res) {
+
     const reversedIdeas = [...ideas].reverse()
 
     let lastIdeas = []
-    for (let idea of reversedIdeas){
-        if(lastIdeas.length < 2){
+    for (let idea of reversedIdeas) {
+        if (lastIdeas.length < 2) {
             lastIdeas.push(idea)
         }
     }
@@ -62,12 +62,12 @@ server.get("/", function(req, res) {
     return res.render("index.html", { ideas: lastIdeas })
 })
 
-server.get("/ideias", function(req, res) {
+server.get("/ideias", function (req, res) {
 
     const reversedIdeas = [...ideas].reverse()
 
-    return res.render("ideias.html", { ideas: reversedIdeas})
+    return res.render("ideias.html", { ideas: reversedIdeas })
 })
 
 // Liguei meu servidor na porta 3000
-server.listen(3000)
+server.listen(process.env.PORT || 3000);
